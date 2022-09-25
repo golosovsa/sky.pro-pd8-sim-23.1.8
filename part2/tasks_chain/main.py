@@ -3,7 +3,9 @@
 # которая получит города только из Московской области,
 # отсортирует их по названию и вернет список id. 
 # На вход функция принимает список объектов towns, 
-# на выходе функция должна возвращать список чисел (id) 
+# на выходе функция должна возвращать список чисел (id)
+from operator import attrgetter
+
 
 class Town:
     def __init__(self, id, name, region):
@@ -19,8 +21,7 @@ towns = [Town(1, 'Балашиха', 'МО'), Town(2, 'Химки', 'МО'), Tow
 
  
 def get_ids(towns):
-    # TODO напишите Ваш код здесь
-    pass
+    return list(map(attrgetter("id"), sorted(filter(lambda t: t.region == "МО", towns), key=attrgetter("name"))))
 
 if __name__ == "__main__":
     print(get_ids(towns))

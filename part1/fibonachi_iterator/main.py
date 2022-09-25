@@ -8,15 +8,26 @@
 class Fib:
     def __init__(self, n):
         self.n = n
-        # TODO напишите Ваш код здесь
+        self.current_index = 0
+        self.prev = 0
+        self.value = 0
+        self.seq_start = [0, 1, 1]
 
     def __iter__(self):
-        # TODO напишите Ваш код здесь
-        pass
+        return self
 
     def __next__(self):
-        # TODO напишите Ваш код
-        pass
+        if self.current_index >= self.n:
+            raise StopIteration
+        if self.current_index < len(self.seq_start):
+            ret = self.seq_start[self.current_index]
+        else:
+            ret = self.prev + self.value
+
+        self.prev, self.value = self.value, ret
+        self.current_index += 1
+        return ret
+
 
 
 fib = Fib(15)

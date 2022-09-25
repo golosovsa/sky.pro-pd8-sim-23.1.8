@@ -9,14 +9,10 @@ from pathlib import Path
 
 
 def find(file_path, txt):
-    with open(file_path) as f:
-        file_content = f.read()
-        lines = file_content.split('\n')
-        res = []
-        for line in lines:
+    with open(file_path, "rt", encoding="utf-8") as fin:
+        for line in fin:
             if txt in line:
-                res.append(line)
-        return res
+                yield line
 
 
 if __name__ == "__main__":

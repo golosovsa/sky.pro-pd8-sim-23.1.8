@@ -25,15 +25,18 @@ def calc_average_age(response_data):
     items = response_data["response"]["items"]
     cities = {}
     for item in items:
-        city_id = item["city"]["id"]
-        if city_id not in cities:
-            cities[city_id] = {"title": item["city"]["title"], "count": 0, "age": 0}
-        city_info = cities[city_id]
-        d, m, y = item["bdate"].split(".")
-        d, m, y = int(d), int(m), int(y)
-        td = datetime.date.today() - datetime.date(y, m, d)
-        city_info["count"] += 1
-        city_info["age"] += td.days // 365
+        try:
+            city_id = item["city"]["id"]
+            if city_id not in cities:
+                cities[city_id] = {"title": item["city"]["title"], "count": 0, "age": 0}
+            city_info = cities[city_id]
+            d, m, y = item["bdate"].split(".")
+            d, m, y = int(d), int(m), int(y)
+            td = datetime.date.today() - datetime.date(y, m, d)
+            city_info["count"] += 1
+            city_info["age"] += td.days // 365
+        except (AttributeError, TypeError):
+            continue
     result = []
     for v in cities.values():
         average = v["age"] / v["count"]

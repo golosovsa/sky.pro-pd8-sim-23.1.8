@@ -14,6 +14,12 @@ def arr_generator(arr):
 
 arr = [1, 2, 3, 4, 5]
 
-# it = # TODO напишите ваш код здесь
+it = iter(arr)
+print(next(it))
+print(next(it))
+print(next(it))
 
-# gen = # TODO напишите ваш код здесь
+gen = arr_generator(arr)
+print(next(gen))
+print(next(gen))
+print(next(gen))

@@ -19,9 +19,10 @@ towns = [Town("балашиха", "мо"), Town("химки", "мо"), Town("т�
 
 
 def find(towns, region):
-    for t in towns:
-        if t.region == region:
-            yield t.name
+    return (t.name for t in towns if t.region == region)
+    # for t in towns:
+    #     if t.region == region:
+    #         yield t.name
 
 
 if __name__ == "__main__":

@@ -5,8 +5,17 @@
 
 
 def fib(n):
-    # TODO напишите ваш код здесь
-    pass
+    seq_start = [0, 1, 1]
+    value, prev = 0, 0
+    for index in range(n):
+
+        if index < len(seq_start):
+            ret = seq_start[index]
+        else:
+            ret = value + prev
+
+        prev, value = value, ret
+        yield ret
 
 
 fib_gen = fib(15)

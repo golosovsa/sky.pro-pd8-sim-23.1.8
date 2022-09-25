@@ -7,5 +7,8 @@ a = [1, 2, 3]
 
 
 def cant_work(a):
-    value = a[4]
-    return value
+    try:
+        value = a[4]
+        return value
+    except IndexError:
+        return "Исключение поймано"

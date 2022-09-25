@@ -3,7 +3,7 @@ import unittest
 from pathlib import Path
 import os
 import main
-from collections import Iterable
+from collections.abc import Iterable
 
 project_name = Path(os.path.abspath(__file__)).parent.parent.parent.name
 cwd = Path.cwd()

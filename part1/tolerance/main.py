@@ -15,8 +15,7 @@ input_str = "привет чао мой друг брат товарищ зна�
 
 
 def filter_rrr(input_str):
-    pass
-    # TODO напишите свою функцию здесь
+    return " ".join([word for word in input_str.split() if "р" not in word])
 
 
 if __name__ == "__main__":
